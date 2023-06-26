@@ -1,75 +1,105 @@
-body{
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(134, 41, 2, 0.683);
 }
-h1 {
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-    background-color: black;
-    color: rgb(253, 0, 0);
-    margin-bottom: 0px;
-    padding: 10px 45px 0px 45px;
-}
-h2 {
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-    }
-.gameBoard {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: black;
-    padding: 0 30px 20px 30px;
 
+span {
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 25px;
 }
+
+h1 {
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  background-color: black;
+  color: rgb(253, 0, 0);
+  margin-bottom: 0px;
+  padding: 10px 45px 0px 45px;
+}
+
+h2 {
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  font-size: 38px;
+}
+
+.gameBoard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: black;
+  padding: 0 30px 20px 30px;
+}
+
 .hiddenCode {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
 }
-.hide, .guess {
-    width: 40px;
-    height: 40px;
-    border: 1px  solid white;
-    margin: 5px;
-    background-color: white;
+
+.hide,
+.guess {
+  width: 40px;
+  height: 40px;
+  border: 1px solid white;
+  margin: 5px;
+  background-color: white;
 }
+
 .board {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 20px 0;
 }
+
 .playerGuess {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: center;
 }
+
 .resultRow {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
 }
+
 .result {
-    width: 15px;
-    height: 18px;
-    border-radius: 50%;
-    margin: 2.5px;
-    border: 2px solid white;
-    background-color: white;
+  width: 15px;
+  height: 18px;
+  border-radius: 50%;
+  margin: 2.5px;
+  border: 2px solid white;
+  background-color: white;
 }
+
 .colorChoice {
-    display: inline-flex;
-    width: 50px;
-    height: 50px;
-    border: 1px solid black;
-    margin: 5px;
+  display: inline-flex;
+  width: 90px;
+  height: 50px;
+  border: 1px solid black;
+  margin: 3px;
 }
+
 .w3-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#colorBox {
+  background-color: rgba(117, 115, 115, 0.857);
+  padding: 11px 10px 26px 10px;
+  margin-top: 85px;
+}
+
+button {
+  margin-top: 15px;
 }
