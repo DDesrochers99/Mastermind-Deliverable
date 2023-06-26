@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poiret+One&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <script defer src="script.js"></script>
     <title>MasterMind Game</title>
   </head>
@@ -12,36 +18,111 @@
   <body>
     <div class="w3-container">
       <h1>MasterMind</h1>
-      <div>
-        <div class="hiddenCode">
-          <div class="hide"></div>
-          <div class="hide"></div>
-          <div class="hide"></div>
-          <div class="hide"></div>
-        </div>
-        <div class="playersGuess">
-          <div class="guess"></div>
-          <div class="guess"></div>
-          <div class="guess"></div>
-          <div class="guess"></div>
-          <div class="result"></div>
-          <div class="result"></div>
-          <div class="result"></div>
-          <div class="result"></div>
+      <div class="gameBoard">
+        <div class="board">
+          <div class="hiddenCode">
+            <div class="hide"></div>
+            <div class="hide"></div>
+            <div class="hide"></div>
+            <div class="hide"></div>
+          </div>
+          <div class="playerGuess">
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+          </div>
+          <div class="resultRow">
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+          </div>
+          <div class="playerGuess">
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+          </div>
+          <div class="resultRow">
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+          </div>
+          <div class="playerGuess">
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+          </div>
+          <div class="resultRow">
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+          </div>
+          <div class="playerGuess">
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+          </div>
+          <div class="resultRow">
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+          </div>
+          <div class="playerGuess">
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+          </div>
+          <div class="resultRow">
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+          </div>
+          <div class="playerGuess">
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+          </div>
+          <div class="resultRow">
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+          </div>
+          <div class="playerGuess">
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+            <div class="guess"></div>
+          </div>
+          <div class="resultRow">
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+            <div class="result"></div>
+          </div>
         </div>
       </div>
     </div>
     <div class="w3-container">
       <h2>Colors</h2>
-      <div class="colorChoice"></div>
-      <div class="colorChoice"></div>
-      <div class="colorChoice"></div>
-      <div class="colorChoice"></div>
-      <div class="colorChoice"></div>
-      <div class="colorChoice"></div>
-    </div>
-    <div class="w3-container">
-      <button class="w3-button w3-red w3-round-xxlarge">Submit</button>
+      <div class="colorChoice w3-red"></div>
+      <div class="colorChoice w3-blue"></div>
+      <div class="colorChoice w3-green"></div>
+      <div class="colorChoice w3-yellow"></div>
+      <div class="colorChoice w3-pink"></div>
+      <div class="colorChoice w3-gray"></div>
+      <div class="w3-container">
+        <button class="w3-button w3-red w3-round-xxlarge">Submit</button>
     </div>
   </body>
 </html>
