@@ -1,14 +1,34 @@
 /*----- constants -----*/
-const colors = ["red", "blue", "green", "yellow", "pink", "gray"];
+const colors = [
+  "rgb(244, 67, 54)",
+  "rgb(33, 150, 243)",
+  "rgb(76, 175, 80)",
+  "rgb(255, 235, 59)",
+  "rgb(233, 30, 99)",
+  "rgb(158, 158, 158)",
+];
 const codeLength = 4;
 
 /*----- state variables -----*/
 let randomCode;
-// randomCode = ["red", "blue", "green", "yellow"];
+let selectedColor;
+let selectedCell;
 /*----- cached elements  -----*/
-
+const colorArray = Array.from(
+  document.querySelectorAll("#colorBox .colorChoice")
+);
+const guessCells = Array.from(document.querySelectorAll(".playerGuess .guess"));
+const resultCells = Array.from(
+  document.querySelectorAll(".playerGuess .result")
+);
 /*----- event listeners -----*/
+colorArray.forEach((color) => {
+  color.addEventListener("click", handleColorSelection);
+});
 
+guessCells.forEach((cell) => {
+  cell.addEventListener("click", handleDropColor);
+});
 /*----- functions -----*/
 
 randomCode = createRandomCode();
@@ -16,40 +36,6 @@ console.log("Random Code", randomCode);
 
 render();
 
-function createRandomCode() {
-  const code = [];
-  while (code.length < codeLength) {
-    const index = Math.floor(Math.random() * colors.length);
-    const color = colors[index];
-    if (!code.includes(color)) {
-      code.push(color);
-    }
-  }
-  return code;
-}
-function getHiddenCode(hiddenCode) {
-  const code = [];
-  for (let i = 0; i < codeLength; i++) {
-    code.push(hiddenCode[i].style.backgroundColor);
-  }
-  return code;
-}
-
-// function render() {
-//   const hideCode = document.querySelectorAll(`.hiddenCode .hide`);
-//   for (let i = 0; i < codeLength; i++) {
-//     hideCode[i].style.backgroundColor = randomCode[i];
-//   }
-//   const playerGuess = document.querySelectorAll(`.playerGuess`);
-//   for (let i = 0; i < playerGuess.length; i++) {
-//     const guessBox = playerGuess[i].querySelectorAll(`.guess`);
-//     const resultBox = playerGuess[i].querySelectorAll(`.result`);
-//     for (let j = 0; j < codeLength; j++) {
-//       guessBox[j].style.backgroundColor = `eggshell`;
-//       resultBox[j].style.backgroundColor = `black`;
-//     }
-//   }
-// }
 function render(revealCode) {
   const hideCode = document.querySelectorAll(`.hiddenCode .hide`);
   for (let i = 0; i < codeLength; i++) {
@@ -63,6 +49,44 @@ function render(revealCode) {
 
 function init() {
   randomCode = createRandomCode();
+  selectedColor = null;
+  selectedCell = null;
   render(false);
+}
+
+function createRandomCode() {
+  const code = [];
+  while (code.length < codeLength) {
+    const index = Math.floor(Math.random() * colors.length);
+    const color = colors[index];
+    if (!code.includes(color)) {
+      code.push(color);
+    }
+  }
+  return code;
+}
+
+function getHiddenCode(hiddenCode) {
+  const code = [];
+  for (let i = 0; i < codeLength; i++) {
+    code.push(hiddenCode[i].style.backgroundColor);
+  }
+  return code;
+}
+
+function handleColorSelection(event) {
+  const computedStyle = window.getComputedStyle(event.target);
+  selectedColor = computedStyle.backgroundColor;
+  console.log("Selected Color:", selectedColor);
+}
+
+function handleDropColor(event) {
+  if (!selectedColor) {
+    return;
+  }
+  const cell = event.target;
+  cell.style.backgroundColor = selectedColor;
+  console.log("Dropped Color:", selectedColor);
+  console.log("Selected Cell:", cell);
 }
 init();
