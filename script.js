@@ -13,6 +13,7 @@ const codeLength = 4;
 let randomCode;
 let selectedColor;
 let selectedCell;
+let submitButtomn;
 /*----- cached elements  -----*/
 const colorArray = Array.from(
   document.querySelectorAll("#colorBox .colorChoice")
@@ -29,6 +30,8 @@ colorArray.forEach((color) => {
 guessCells.forEach((cell) => {
   cell.addEventListener("click", handleDropColor);
 });
+
+submitButtomn.addEventListener("click", getWinner);
 /*----- functions -----*/
 
 randomCode = createRandomCode();
@@ -86,7 +89,6 @@ function handleDropColor(event) {
   }
   const cell = event.target;
   cell.style.backgroundColor = selectedColor;
-  console.log("Dropped Color:", selectedColor);
-  console.log("Selected Cell:", cell);
 }
+
 init();
