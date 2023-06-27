@@ -35,18 +35,34 @@ function getHiddenCode(hiddenCode) {
   return code;
 }
 
-function render() {
+// function render() {
+//   const hideCode = document.querySelectorAll(`.hiddenCode .hide`);
+//   for (let i = 0; i < codeLength; i++) {
+//     hideCode[i].style.backgroundColor = randomCode[i];
+//   }
+//   const playerGuess = document.querySelectorAll(`.playerGuess`);
+//   for (let i = 0; i < playerGuess.length; i++) {
+//     const guessBox = playerGuess[i].querySelectorAll(`.guess`);
+//     const resultBox = playerGuess[i].querySelectorAll(`.result`);
+//     for (let j = 0; j < codeLength; j++) {
+//       guessBox[j].style.backgroundColor = `eggshell`;
+//       resultBox[j].style.backgroundColor = `black`;
+//     }
+//   }
+// }
+function render(revealCode) {
   const hideCode = document.querySelectorAll(`.hiddenCode .hide`);
   for (let i = 0; i < codeLength; i++) {
-    hideCode[i].style.backgroundColor = randomCode[i];
-  }
-  const playerGuess = document.querySelectorAll(`.playerGuess`);
-  for (let i = 0; i < playerGuess.length; i++) {
-    const guessBox = playerGuess[i].querySelectorAll(`.guess`);
-    const resultBox = playerGuess[i].querySelectorAll(`.result`);
-    for (let j = 0; j < codeLength; j++) {
-      guessBox[j].style.backgroundColor = `eggshell`;
-      resultBox[j].style.backgroundColor = `black`;
+    if (revealCode) {
+      hideCode[i].style.backgroundColor = randomCode[i];
+    } else {
+      hideCode[i].style.backgroundColor = "black";
     }
   }
 }
+
+function init() {
+  randomCode = createRandomCode();
+  render(false);
+}
+init();
