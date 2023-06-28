@@ -16,6 +16,8 @@ let randomCode;
 let selectedColor;
 let selectedCell;
 let submitButton;
+let matchedGuess = [];
+let unMatchedCode = [...colors];
 
 /*----- cached elements  -----*/
 
@@ -103,10 +105,18 @@ function checkWinner() {
     const guessCells = Array.from(guessRow.getElementsByClassName(`guess`));
     const guess = guessCells.map((cell) => cell.style.backgroundColor);
     if (guess.length === codeLength) {
+      winner = [];
+      matchedGuess = [];
       const winner = compareResults(guess, randomCode);
       updateResults(guessRow, winner);
     }
   });
+}
+function updateResults(guessRow, winner) {
+  const resultCells = [...guessRow.getElementsByClassName("result")];
+  for (let i = 0; i < codeLength; i++) {
+    resultCells[i].style.backgroundColor = winner[i];
+  }
 }
 
 init();
