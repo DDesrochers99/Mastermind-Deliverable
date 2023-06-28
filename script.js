@@ -1,4 +1,5 @@
 /*----- constants -----*/
+
 const colors = [
   "rgb(244, 67, 54)",
   "rgb(33, 150, 243)",
@@ -10,11 +11,14 @@ const colors = [
 const codeLength = 4;
 
 /*----- state variables -----*/
+
 let randomCode;
 let selectedColor;
 let selectedCell;
-let submitButtomn;
+let submitButton;
+
 /*----- cached elements  -----*/
+
 const colorArray = Array.from(
   document.querySelectorAll("#colorBox .colorChoice")
 );
@@ -22,6 +26,9 @@ const guessCells = Array.from(document.querySelectorAll(".playerGuess .guess"));
 const resultCells = Array.from(
   document.querySelectorAll(".playerGuess .result")
 );
+submitButton = document.getElementById("submitButton");
+const guessRows = document.querySelectorAll(".playerGuess");
+
 /*----- event listeners -----*/
 colorArray.forEach((color) => {
   color.addEventListener("click", handleColorSelection);
@@ -31,7 +38,7 @@ guessCells.forEach((cell) => {
   cell.addEventListener("click", handleDropColor);
 });
 
-submitButtomn.addEventListener("click", getWinner);
+submitButton.addEventListener("click", getWinner);
 /*----- functions -----*/
 
 randomCode = createRandomCode();
@@ -91,4 +98,22 @@ function handleDropColor(event) {
   cell.style.backgroundColor = selectedColor;
 }
 
+function getWinner() {
+  guessRows.forEach((guessRow) => {
+    const guessCells = Array.from(guessRow.getElementsByClassName(`guess`));
+    const guess = guessCells.map((cell) => cell.style.backgroundColor);
+    if (guess.length === code.length) {
+      const winner = getWinner(guess);
+      updateResults(guessRow, winner);
+    }
+  });
+}
+
+function compareResults(guess, code) {
+  const winner = [];
+    for (let i =0; i < codeLength; i++) {
+      
+    }
+}
+}
 init();
