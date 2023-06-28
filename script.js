@@ -38,7 +38,7 @@ guessCells.forEach((cell) => {
   cell.addEventListener("click", handleDropColor);
 });
 
-submitButton.addEventListener("click", getWinner);
+submitButton.addEventListener("click", checkWinner);
 /*----- functions -----*/
 
 randomCode = createRandomCode();
@@ -98,22 +98,15 @@ function handleDropColor(event) {
   cell.style.backgroundColor = selectedColor;
 }
 
-function getWinner() {
+function checkWinner() {
   guessRows.forEach((guessRow) => {
     const guessCells = Array.from(guessRow.getElementsByClassName(`guess`));
     const guess = guessCells.map((cell) => cell.style.backgroundColor);
-    if (guess.length === code.length) {
-      const winner = getWinner(guess);
+    if (guess.length === codeLength) {
+      const winner = compareResults(guess, randomCode);
       updateResults(guessRow, winner);
     }
   });
 }
 
-function compareResults(guess, code) {
-  const winner = [];
-    for (let i =0; i < codeLength; i++) {
-      
-    }
-}
-}
 init();
