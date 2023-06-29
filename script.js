@@ -15,7 +15,6 @@ const codeLength = 4;
 let randomCode;
 let selectedColor;
 let selectedCell;
-let submitButton;
 let matchedGuess = [];
 let unMatchedCode = [...colors];
 
@@ -30,7 +29,7 @@ const guessCells = Array.from(
 const resultCells = Array.from(
   document.querySelectorAll(".playerGuess + .result")
 );
-submitButton = document.getElementById("submitButton");
+const submitButton = document.getElementById("submitButton");
 const guessRows = document.querySelectorAll(".playerGuess");
 
 /*----- event listeners -----*/
@@ -62,7 +61,6 @@ function render(revealCode) {
 }
 
 function init() {
-  randomCode = createRandomCode();
   selectedColor = null;
   selectedCell = null;
   render(false);
@@ -76,10 +74,10 @@ function createRandomCode() {
     if (!code.includes(color)) {
       code.push(color);
     }
+    console.log("createradnomcode" + code);
   }
   return code;
 }
-
 function getHiddenCode(hiddenCode) {
   const code = [];
   for (let i = 0; i < codeLength; i++) {
@@ -91,7 +89,6 @@ function getHiddenCode(hiddenCode) {
 function handleColorSelection(event) {
   const computedStyle = window.getComputedStyle(event.target);
   selectedColor = computedStyle.backgroundColor;
-  console.log("Selected Color:", selectedColor);
 }
 
 function handleDropColor(event) {
@@ -103,60 +100,72 @@ function handleDropColor(event) {
 }
 
 function checkWinner() {
+  let isWinner = false;
   for (let i = 0; i < guessRows.length; i++) {
     const guessRow = guessRows[i];
-    const guessCells = Array.from(guessRow.getElementsByClassName(`guess`));
+    const guessCells = Array.from(guessRow.getElementsByClassName("guess"));
     const guess = guessCells.map((cell) => cell.style.backgroundColor);
-    console.log("Guess:", guess);
     const empty = guess.some((color) => color === "");
     if (empty) {
       return;
     }
+    console.log("guess" + guess);
     if (guess.length === codeLength) {
       const result = compareResults(guess, randomCode);
       updateResults(guessRow, result);
 
       if (result.every((color) => color === "green")) {
-        return;
+        isWinner = true;
+        break;
       }
     }
     unMatchedCode = unMatchedCode.filter((color) => !guess.includes(color));
   }
-}
-function updateResults(guessRow, winner) {
-  const resultCells = guessRow.querySelectorAll(".result");
-  for (let i = 0; i < codeLength; i++) {
-    resultCells[i].style.backgroundColor = winner[i];
+
+  if (isWinner) {
+    console.log("You won the game!");
+  } else {
+    console.log("You lost the game!");
   }
 }
 
 function compareResults(guess, code) {
   let winner = [];
-  let unmatchedGuess = guess.slice();
-  let codeCopy = code.slice();
+  let unmatchedGuess = guess;
 
   for (let i = 0; i < codeLength; i++) {
-    if (guess[i] === code[i]) {
+    if (code[i] === unmatchedGuess[i]) {
+      console.log(unmatchedGuess[i]);
+      console.log("Random" + code[i]);
       winner.push("green");
-      unmatchedGuess[i] = null;
-      codeCopy[i] = null;
+      unmatchedGuess[i] = "";
     }
   }
+  console.log(unmatchedGuess);
+  console.log("Winner" + winner);
 
   for (let i = 0; i < codeLength; i++) {
-    if (unmatchedGuess[i] !== null) {
-      const colorIndex = codeCopy.indexOf(unmatchedGuess[i]);
-      if (colorIndex !== -1) {
+    if (unmatchedGuess[i] !== "") {
+      const guessColor = unmatchedGuess[i];
+      console.log(guessColor);
+      console.log("code" + code);
+      console.log(code.includes(guessColor));
+      if (code.includes(guessColor)) {
         winner.push("yellow");
-        codeCopy[colorIndex] = null;
+      } else {
+        winner.push("red");
       }
     }
   }
 
-  while (winner.length < codeLength) {
-    winner.push("red");
-  }
-
   return winner;
+}
+
+function updateResults(guessRow, winner) {
+  const resultCells = guessRow.querySelectorAll(".result");
+
+  for (let i = 0; i < codeLength; i++) {
+    resultCells[i].style.backgroundColor = winner[i];
+  }
 }
 init();
