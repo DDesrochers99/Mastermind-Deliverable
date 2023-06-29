@@ -77,6 +77,7 @@ function init() {
       resultCell.style.backgroundColor = "";
     });
   });
+  messageElement.textContent = "Welcome!";
 }
 
 function createRandomCode() {
@@ -113,6 +114,7 @@ function handleDropColor(event) {
 
 function checkWinner() {
   let isWinner = false;
+  let hasEmptyGuess = false;
   for (let i = 0; i < guessRows.length; i++) {
     const guessRow = guessRows[i];
     const guessCells = Array.from(guessRow.getElementsByClassName("guess"));
@@ -141,6 +143,7 @@ function checkWinner() {
     messageElement.textContent = "Try again!";
   } else {
     messageElement.textContent = "Better luck next time!";
+    render(true);
   }
 }
 
