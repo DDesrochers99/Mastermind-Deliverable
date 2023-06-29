@@ -32,7 +32,7 @@ const resultCells = Array.from(
 const submitButton = document.getElementById("submitButton");
 const guessRows = document.querySelectorAll(".playerGuess");
 const resetButton = document.getElementById("resetButton");
-
+const messageElement = document.querySelector(".winnerMessage");
 /*----- event listeners -----*/
 colorArray.forEach((color) => {
   color.addEventListener("click", handleColorSelection);
@@ -118,10 +118,12 @@ function checkWinner() {
     const guessCells = Array.from(guessRow.getElementsByClassName("guess"));
     const guess = guessCells.map((cell) => cell.style.backgroundColor);
     const empty = guess.some((color) => color === "");
+
     if (empty) {
-      return;
+      hasEmptyGuess = true;
+      break;
     }
-    console.log("guess" + guess);
+
     if (guess.length === codeLength) {
       const result = compareResults(guess, randomCode);
       updateResults(guessRow, result);
@@ -133,11 +135,12 @@ function checkWinner() {
     }
     unMatchedCode = unMatchedCode.filter((color) => !guess.includes(color));
   }
-
   if (isWinner) {
-    console.log("You won the game!");
+    messageElement.textContent = "You won!";
+  } else if (hasEmptyGuess) {
+    messageElement.textContent = "Try again!";
   } else {
-    console.log("You lost the game!");
+    messageElement.textContent = "Better luck next time!";
   }
 }
 
@@ -147,21 +150,15 @@ function compareResults(guess, code) {
 
   for (let i = 0; i < codeLength; i++) {
     if (code[i] === unmatchedGuess[i]) {
-      console.log(unmatchedGuess[i]);
-      console.log("Random" + code[i]);
       winner.push("green");
       unmatchedGuess[i] = "";
     }
   }
-  console.log(unmatchedGuess);
-  console.log("Winner" + winner);
 
   for (let i = 0; i < codeLength; i++) {
     if (unmatchedGuess[i] !== "") {
       const guessColor = unmatchedGuess[i];
       console.log(guessColor);
-      console.log("code" + code);
-      console.log(code.includes(guessColor));
       if (code.includes(guessColor)) {
         winner.push("yellow");
       } else {
