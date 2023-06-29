@@ -66,6 +66,17 @@ function init() {
   randomCode = createRandomCode();
   console.log("Random Code", randomCode);
   render(false);
+
+  guessCells.forEach((cell) => {
+    cell.style.backgroundColor = "";
+  });
+
+  guessRows.forEach((guessRow) => {
+    const resultCells = guessRow.querySelectorAll(".result");
+    resultCells.forEach((resultCell) => {
+      resultCell.style.backgroundColor = "";
+    });
+  });
 }
 
 function createRandomCode() {
@@ -76,7 +87,6 @@ function createRandomCode() {
     if (!code.includes(color)) {
       code.push(color);
     }
-    console.log("createradnomcode" + code);
   }
   return code;
 }
