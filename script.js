@@ -31,6 +31,7 @@ const resultCells = Array.from(
 );
 const submitButton = document.getElementById("submitButton");
 const guessRows = document.querySelectorAll(".playerGuess");
+const resetButton = document.getElementById("resetButton");
 
 /*----- event listeners -----*/
 colorArray.forEach((color) => {
@@ -42,10 +43,9 @@ guessCells.forEach((cell) => {
 });
 
 submitButton.addEventListener("click", checkWinner);
-/*----- functions -----*/
 
-randomCode = createRandomCode();
-console.log("Random Code", randomCode);
+resetButton.addEventListener("click", init);
+/*----- functions -----*/
 
 render();
 
@@ -63,6 +63,8 @@ function render(revealCode) {
 function init() {
   selectedColor = null;
   selectedCell = null;
+  randomCode = createRandomCode();
+  console.log("Random Code", randomCode);
   render(false);
 }
 
