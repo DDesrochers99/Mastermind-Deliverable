@@ -119,4 +119,5 @@ li {
 .colorChoice:hover,
 .guess:hover {
   cursor: crosshair;
+  background-color: rgb(225, 225, 225);
 }
