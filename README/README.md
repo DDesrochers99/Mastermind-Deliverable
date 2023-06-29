@@ -1,6 +1,8 @@
 Thank you for being here!
 
-This is my Mastermind Game. There is a secrete code and you have 7 chances to guess it using the color coded feedback.
+This is my Mastermind Game. There is a secrete code and you have 7 chances to guess it using the color coded feedback. Please feel free to leave feedback about the code or design all are appreciated.
+
+Play Here:https://ddesrochers99.github.io/Mastermind-Deliverable/
 
 ## Screenshots(Home, Winner, Loser):
 
